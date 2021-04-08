@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  python-postgres:
+    container_name: awesome-python-postgres
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: ml-specialist-python
+      POSTGRES_PASSWORD: ml-addict
+      POSTGRES_DB: flask
