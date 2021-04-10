@@ -22,10 +22,11 @@ POSTGRES_PW = get_env_variable("POSTGRES_PW")
 POSTGRES_DB = get_env_variable("POSTGRES_DB")
 
 DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
-
 # Sets the database
 class Config(object):
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'butter'
+    DEBUG = False
+    TESTING = False
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'generickey'
     SQLALCHEMY_DATABASE_URI = DB_URL or \
-            'psql:///' + os.path.join(basedir)
+                              os.environ.get('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
