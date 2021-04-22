@@ -7,6 +7,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 # loads the environment variable file
 load_dotenv()
 
+
 # Function to get the environmental variables
 def get_env_variable(name):
     try:
@@ -14,6 +15,7 @@ def get_env_variable(name):
     except KeyError:
         message = "Expected env variable '{}' not set.".format(name)
         raise Exception(message)
+
 
 # Set the variables
 POSTGRES_URL = get_env_variable("POSTGRES_URL")
@@ -23,7 +25,7 @@ POSTGRES_DB = get_env_variable("POSTGRES_DB")
 DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER, pw=POSTGRES_PW, url=POSTGRES_URL,
                                                                db=POSTGRES_DB)
 
-DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
+
 # Sets the database
 class Config(object):
     DEBUG = False
